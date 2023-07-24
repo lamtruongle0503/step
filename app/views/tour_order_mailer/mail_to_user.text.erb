@@ -1,0 +1,62 @@
+【<%= @tour_order_accompany.first_name + '　' + @tour_order_accompany.last_name %>】様
+
+この度は『STEPトラベル』をご利用いただき、誠にありがとうございます。
+以下の通り、ご予約が完了いたしました。
+ツアー催行が決定いたしましたら、改めてご出発の案内をメールさせていただきます。
+（ツアー開始７日前を目処にメールいたします）
+■ご予約内容
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+・予約番号 ： <%= @tour_order.order_no %>
+・予約受付日 ： <%= @tour_order.created_at.to_date %>(<%= @day_created %>)
+
+・ツアーNO  ： <%= @tour_order.tour.code %>
+・ツアー名 ： <%= @tour_order.tour.name %>
+・カテゴリー ：日帰りツアー
+・ツアータイトル ： <%= @tour_order.tour.title %>
+・出発日 ： <%= @tour_order.departure_date.to_date %>(<%= @departure_date %>)
+
+<% if @tour_order.tour.type_locate == Tour::STAY %>
+・帰着日 ： <%= @tour_order.departure_date + @tour_order.tour.stayed_nights.day %>(<%= @day_end %>)
+<% end %>
+
+・出発場所 ： <%= @tour_order.tour_bus_info.tour_place_start.prefecture.name %> (<%= @address %>)
+・お申込代表者 ： <%= @tour_order_accompany.first_name + '　' + @tour_order_accompany.last_name %>様（<%= @tour_order_accompany.first_name_kana + '　' + @tour_order_accompany.last_name_kana %>）
+・お申込人数 ：大人<%= @amount_tour_order["adult_amount"] %>名様　子供<%= @amount_tour_order["child_amount"] %>名様　幼児<%= @amount_tour_order["baby_amount"] %>名様
+・お座席指定 ： <%= @tour_order.tour_order_log.amount_tour_bus_seat_map["selected_seat_map"].join(", ").gsub(", ", "、") %>
+<% if @tour_order.tour.type_locate == Tour::INDAY %>
+・食事選択 ：基本料理A<%= @price_special_food["a"] %>名、特撰料理B<%= @price_special_food["b"] %>名、特選料理C<%= @price_special_food["c"] %>名
+■料金明細：
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+□ツアー料金：<%= @amount_tour_order["adult_price"] %>円×<%= @amount_tour_order["adult_amount"] %>名、<%= @amount_tour_order["child_price"] %>円×<%= @amount_tour_order["child_amount"] %>名、<%= @amount_tour_order["baby_price"] %>円×<%= @amount_tour_order["baby_amount"] %>名
+□座席指定：<%= @tour_order.mail_seat_price %>
+□食事選択：<%= @price_special_food["price_special_food_a"] %>円×<%= @price_special_food["a"] %>名、<%= @price_special_food["price_special_food_b"] %>円×<%= @price_special_food["b"] %>名、<%= @price_special_food["price_special_food_c"] %>円×<%= @price_special_food["c"] %>名
+<% else %>
+・オプション選択 ： <%= @tour_order.tour_order_log.tour_options.map { |tour_option| "#{tour_option[:option_name]}　#{tour_option[:amount]}名"}.join(", ").gsub(", ", "、") %>
+・宿泊施設名 ： <%= @tour_order.tour.hostels.map { |hostel|  "#{hostel.name}"}.join(", ").gsub(", ", "、") %>
+・部屋数 ：<%= @tour_order.room.values.sum %> 部屋
+・１部屋あたりの人数 ：<%= @tour_order.mail_amount_room %>
+■料金明細：
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+□ツアー料金：<%= @tour_order.mail_price_room %>
+□座席指定：<%= @tour_order.mail_seat_price %>
+□食事選択：<%= @tour_order.tour_order_log.tour_options.map { |tour_option| "#{tour_option[:option_price]}円x#{tour_option[:amount]}名"}.join(", ").gsub(", ", "、") %>
+<% end %>
+======================================================================
+□料金合計：　<%= @tour_order.initial_price.to_i %>円 (サービス料込・消費税込)
+・クーポン利用：<%= @tour_order.coupon_discount.to_i %>円
+・ポイント利用： <%= @tour_order.used_points.to_i %>円
+■差引支払金額 ：<%= @tour_order.total.to_i %>円
+■注意事項（必ずご確認ください）
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+<%= @tour_order.memo %>
+
+■キャンセルについて　
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+キャンセル料は以下の通り頂戴いたします。
+<% @tour_cancellations.each do |tour_cancellation_detail|%>
+  <%= tour_cancellation_detail.name %> ：ツアー料金の<%= tour_cancellation_detail.value %>％
+<% end %>
+■お問い合わせ先（平日10：00～17：00）
+株式会社ＳＴＥＰトラベル
+０６－６６３４－０１２３
+０１２０－５９７－１６５

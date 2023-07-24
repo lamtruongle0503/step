@@ -1,0 +1,18 @@
+en:
+  order_tours:
+    bus_infos:
+      seat_position:  "予約に失敗しました。あなたの座席番号（%{seat_booked}）は他の方が予約されています。"
+      bus_full_flag:  "この座席はすでに予約されているため、編集できません。"
+      full_flag: "満席"
+      booked: "この出発地はすでに予約されているため、削除できません。"
+    must_be_confirm: must_be_confirm
+    tour:
+      must_be_available: must_be_available
+    tours:
+      booked: "このツアーを予約した人がいるため、削除できません。"
+      book_cancelled: "このツアーはキャンセルされました。"
+      select_booked: "座席が変更されました。もう一度選択してください。"
+    tour_informations:
+      info: "同伴者の情報をご記入ください。"
+    use_point:
+      used_point_must_less_than_or_equal_point: "利用ポイントが利用可能ポイントを超えている。"

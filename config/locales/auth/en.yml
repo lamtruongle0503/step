@@ -1,0 +1,24 @@
+en:
+  auth:
+    login_failure: email/password invalid
+    blank: can't be blank
+    is_valid: is valid
+    is_not_verify: user isn't verified
+  authorized:
+    login_failure: login_failure
+    logout_failure: logout_failure
+    logout_success: logout_success
+    unauthorized: unauthorized
+  invalid:
+    access_token: invalid_access_token
+    current_pasword: current password invalid
+  reset_password:
+    invalid_verify_code: invalid verify code
+    sent_verify_code: sent verify code
+    verify_code_expired: verify code expired
+    verify_messages: 'STEPアプリの確認コード%{verify_code}です。'
+  verify:
+    invalid_verify_code: invalid verify code
+    sent_verify_code: sent verify code
+    verify_code_expired: verify code expired
+    verify_messages: 'STEPアプリの確認コード%{verify_code}です。'

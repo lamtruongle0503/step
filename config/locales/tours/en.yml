@@ -1,0 +1,14 @@
+en:
+  tour:
+    special_description:
+      full_place: 満席案内
+      temporari: テンポラリー
+      cxl: キャンセル
+      cxl_waiting: CXL待ち
+    special_name:
+      full_place: 満席
+      temporari: 999
+      cxl: CXL
+      cxl_waiting: CXL待ち
+    file:
+      must_be_csv: "must be a CSV file"

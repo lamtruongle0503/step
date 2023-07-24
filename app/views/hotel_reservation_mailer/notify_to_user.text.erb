@@ -1,0 +1,50 @@
+<%= @hotel_order.user.full_name %>　様
+この度は『STEPトラベル』をご利用いただき、誠にありがとうございます。
+以下の通り、ご予約が完了いたしました。
+■ご予約内容
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+・予約番号 ：<%= @hotel_order.order_no %>
+・予約受付日 ：<%= @hotel_order.created_at.to_date %> (<%= @day_created %>)
+
+□宿泊施設名 ：<%= @hotel_order.hotel.name %>
+・宿泊施設住所 ：<%= @hotel_order.hotel.postal_code %> <%= @hotel_order.hotel.address1 %> <%= @hotel_order.hotel.address2 %>
+・宿泊施設電話番号 ：<%= @hotel_order.hotel.telephone %>
+□チェックイン日時 ：<%= @hotel_order.check_in %> (<%= @day_checkin %>)
+・チェックアウト日 ：<%= @hotel_order.check_out %> (<%= @day_checkout %>)
+
+ ・宿泊者氏名 ：<%= @hotel_order.user.full_name %>様 (<%= @hotel_order.user.furigana %>)
+・申込人数(１部屋あたり)　：大人(<%= @hotel_order.adult_total %>人)　子供(<%= @hotel_order.person_total - @hotel_order.adult_total %>人)
+・申込部屋数 ：<%= @hotel_order.total_room %>
+・部屋タイプ ：<%= @type_room %>
+■宿泊プラン
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+プラン名：<%= @hotel_order.hotel_plan.name %>
+■プラン内容
+料金には1泊室料、サービス料・消費税が含まれております。
+■料金明細・食事条件：（1部屋あたり）
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+□宿泊料金合計：<%= @hotel_order.total / @hotel_order.total_room %>円
+□食事条件: <%= @hotel_order.hotel_plan.hotel_meal.name %>
+□オプション等: <%= @hotel_order.price_option %>円
+======================================================================
+□料金合計：　<%= @hotel_order.total %>円  (サービス料込・消費税込)
+・クーポン利用：<%= @hotel_order.coupon&.price || 0 %>円
+・ポイント利用：<%= @hotel_order.used_points || 0 %>円
+■差引支払金額 ：<%= @hotel_order.total.to_i - @hotel_order.coupon&.price.to_i - @hotel_order.used_points.to_i %>円
+■注意事項（必ずご確認ください）
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+■キャンセルについて
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+キャンセル料は以下の通り頂戴いたします。
+<% @hotel_order.hotel_plan.hotel_cancellation_policy.hotel_cancellation_details.each do |item| %>
+    <%= item.name %> : 宿泊料金の<%= item.format_value %> <%= item.format_unit_jp %>
+<% end %>
+不泊については以下の通り頂戴いたします。
+連絡なしの不泊/不着 ：宿泊料金の100％
+ ※キャンセル料は宿泊施設の定めた【キャンセルポリシー】に
+沿って請求させていただきます。
+・現地決済の場合・・・各宿泊施設
+・オンラインカード決済の場合・・・ＳＴＥＰトラベル
+■お問い合わせ先
+株式会社ＳＴＥＰトラベル
+０６－６６３４－０１２３

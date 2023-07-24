@@ -1,0 +1,82 @@
+# Files in the config/locales directory are used for internationalization
+# and are automatically loaded by Rails. If you want to use locales other
+# than English, add the necessary files in this directory.
+#
+# To use the locales, use `I18n.t`:
+#
+#     I18n.t 'hello'
+#
+# In views, this is aliased to just `t`:
+#
+#     <%= t('hello') %>
+#
+# To use a different locale, set it with `I18n.locale`:
+#
+#     I18n.locale = :es
+#
+# This would use the information in config/locales/es.yml.
+#
+# The following keys must be escaped otherwise they will not be retrieved by
+# the default I18n backend:
+#
+# true, false, on, off, yes, no
+#
+# Instead, surround them with single quotes.
+#
+# en:
+#   'true': 'foo'
+#
+# To learn more, please read the Rails Internationalization guide
+# available at https://guides.rubyonrails.org/i18n.html.
+
+en:
+  models:
+    exists: 'already_exists'
+    does_not_exists: does_not_exists
+    can_not_blank: can not blank
+    attribute_does_not_exists: '%{att} does_not_exists'
+  errors:
+    internal_server_error: internal server error
+    password_invalid: password_invalid
+  headers:
+    users: ['会員No','氏名', 'フリガナ', '携帯電話', '登録日', '性別', '生年月日', '年齢', '郵便番号',
+            '住所1', '住所2', '固定電話', 'メールアドレス', 'DM発送可否', '会員ステータス', 'メモ欄']
+    contacts: ['No','お問合せ番号', 'お問合せユーザー', 'フリガナ', 'カテゴリ', 'お問合せ内容', '対応内容',
+               '電話番号', 'メールアドレス', 'お問合せ日時', 'ステータス']
+    tours: ['ツアーNO', 'ツアー名', '企業名', 'カテゴリ', '支店', '担当者', '作成日', '最終更新日', '掲載']
+    staffs: ['NO', '社員名', 'ID', 'パスワード', '支社名', '部署名']
+    hotels: ['登録NO', 'ホテル・旅館名称', 'ヨミガナ', '都道府県', 'エリア', 'カテゴリー', '連絡先',
+             '掲載ステータス ']
+    orders: ['購入番号', '購入者', '購入者 (ふりがな)', '購入商品', '購入金額', '購入日', '支払い方法',
+             '支払い状態', '出荷状態', '購入ステータス']
+    products: ['商品番号', '商品名', 'カテゴリ', 'サイズ', '単価', '割引', '公開 /非公開']
+    reservations: ['ホテル・旅館名称', '予約番号', '予約日', '宿泊代表者名', '宿泊者フリガナ', 'チェックイン日',
+                   'チェックアウト日', 部屋人数', '部屋数','合計人数', '予約金額総合計', 'クーポン割引', 'ポイント利用', 
+                   'お客様支払金額', '支払方法', 'ステータス']
+    tour_managements: ['NO', 'ツアーNO', 'ツアー名', '企業名', 'カテゴリー', '支店', '台数', 'V担当者',
+                       '発送数', '掲載']
+    tour_order_cancel: ['氏名', 'フリガナ', '郵便番号', '住所1', '住所2', '携帯番号', '固定電話', '出発日',
+                        '出発地', '号車', '人数', '代金小計', 'クーポン', 'ポイント利用設定', '旅行代金お支払い額合計',
+                        '支払方法', '支払確認', '請求書送付', '備考', 'キャンセル処理日', 'キャンセル料率',
+                        'キャンセル料', 'ポイント返還', '返金予定額', '返金確認日', '請求予定額', '請求確認日']
+
+    tour_bus_info: ['NO', '予約番号', '会員番号', '氏名', 'フリガナ', '座席番号', 'オプション', '備考']
+  response_type:
+    csv: text/csv; charset=shift_jis
+    pdf: application/pdf; charset=shift_jis
+  time:
+    formats:
+      strftime: '%Y%m%d%H%M%S'
+      strfmonth: '%d%m'
+      strfdate: '%Y%m%d'
+      only_time: '%H：%M'
+      short: '%m/%d/%Y'
+      full_date: '%Y/%m/%d'
+  date:
+    formats:
+      short: '%m月%d日（%a）'
+      common: '%Y/%m/%d'
+    abbr_day_names: [日, 月, 火, 水, 木, 金, 土]
+  permission:
+    # policy_not_found: "Policy not found"  => not use
+    denied: permission_denied

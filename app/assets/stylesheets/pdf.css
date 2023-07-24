@@ -1,0 +1,152 @@
+html {
+  font-size: 11px;
+  background-color: white;
+}
+
+.container {
+  margin: 1rem;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td {
+  vertical-align: middle;
+  text-align: center;
+  color: #000;
+  padding: 5px;
+}
+
+.widget-table {
+  margin-bottom: 1rem;
+}
+
+.widget-table .strong {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+.widget-table td {
+  border-right: 2px solid #000;
+}
+
+.widget-table tr {
+  border: 2px solid #000;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.main-table tr {
+  border: 1px solid #000;
+  font-size: 11px;
+}
+
+.main-table td, th {
+  border-right: 1px solid #000;
+}
+
+.divide {
+  margin: 10px 0;
+}
+
+.footer-table tr {
+  border: 1px solid #000;
+  font-size: 11px;
+}
+
+.footer-table {
+  margin-top: 1rem;
+}
+
+.footer-table td, th {
+  border-right: 1px solid #000;
+}
+
+.info-table tr {
+  border: 1px solid #000;
+  font-size: 11px;
+}
+
+.info-table td, th {
+  border-right: 1px solid #000;
+}
+
+table.footer-table {
+  width: 48%;
+  display: inline-table;
+}
+
+table.footer-table:last-child {
+  float: right;
+}
+
+.h21 {
+  height: 21px;
+}
+
+.w35 {
+  width: 35px;
+}
+
+.full-circle {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background-color: #000;
+  display: inline-block;
+}
+
+.hollow-circle {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 1px solid #000;
+  display: inline-block;
+}
+
+.w-40 {
+  width: 40%;
+}
+
+.seat-map-table td {
+  border-right: 2px solid #000;
+}
+
+.seat-map-table tr {
+  border: 2px solid #000;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.seat-map-img {
+  text-align: center;
+  object-fit: cover;
+}
+
+.hotel-table tr {
+  border: 1px solid #000;
+  font-size: 14px;
+}
+
+.hotel-table td, th {
+  border-right: 1px solid #000;
+}
+
+.w-25 {
+  width: 25%;
+}
+
+.content-small {
+  font-size: 11px !important;
+  text-align: left;
+}
+
+.mb-1rem {
+  margin-bottom: 1rem;
+}
+
+.d-block {
+  display: block;
+}

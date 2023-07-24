@@ -1,0 +1,10 @@
+<td><%= index %></td>
+<td><%= format_owner(accompany.is_owner) %></td>
+<td><%= format_accompany(!accompany.is_owner) %></td>
+<td><%= accompany_selected(accompany) %></td>
+<td><%= accompany.selected_seat %></td>
+<td colspan="4"><%= format_name(accompany) %></td>
+<td><%= format_gender(accompany.gender) %></td>
+<td><%= accompany.age %></td>
+<td colspan="2"><%= purchased_amount(accompany).to_i %></td>
+<td colspan="3"><%= payment_note(accompany) %></td>

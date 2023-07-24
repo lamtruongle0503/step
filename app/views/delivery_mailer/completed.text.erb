@@ -1,0 +1,29 @@
+【<%= @order.user.full_name %>】様
+
+このたびは、STEPにて【<%= @order.agency.name %>】をご利用いただきまして誠にありがとうございます。
+
+ご注文商品の発送が完了いたしました。
+到着まで今しばらくお待ちください。
+
+【<%= @order.code %>】
+
+<%= render "shared/order_info", order: @order %>
+▼配送状況は下記よりご確認ください。
+※配送状況が登録されるまでに時間がかかる場合がございます。
+内容が反映されていない場合は、少し時間を空けて再度ご確認ください。
+<% case @order.delivery.name %>
+<% when valid_delivery?("ヤマト運輸") %>
+https://toi.kuronekoyamato.co.jp/cgi-bin/tneko
+<% when valid_delivery?("佐川急便") %>
+https://k2k.sagawa-exp.co.jp/p/sagawa/web/okurijoinput.jsp
+<% when valid_delivery?("日本郵便") %>
+https://trackings.post.japanpost.jp/services/srv/search/input
+<% end %>
+お届け日時の変更をご希望の場合は、配送会社に直接ご連絡ください。
+
+このたびは【<%= @order.agency.name %>】にてご注文いただき誠にありがとうございました。
+またのご利用を心よりお待ち申し上げております。
+
+ご不明な点などがございましたら、お気軽にお知らせください。
+商品に関するお問い合わせ先
+99-9999-9999

@@ -1,0 +1,214 @@
+<style>
+  *{
+    margin: 0;
+    padding: 0;
+    font-family: "Noto Sans JP", sans-serif;
+  }
+  .main-bus{
+    width: 1000px;
+    margin: 0 auto;
+    margin-top: 50px;
+  }
+  .container-list {
+    border: 1px solid;
+    border-radius: 15px;
+    padding: 0 10px;
+    position: relative;
+  }
+  .list-seating{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    width: 100%;
+    align-items: center;
+    justify-content: center;
+  }
+  .item-seating-hide{
+    position: relative;
+    text-align: center;
+    height: 50px;
+    padding: 10px 5px;
+    margin: 10px 4px;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .row-behind-text {
+    height: 50px;
+    width: 100%;
+    padding: 20px 5px 10px 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .text-seat-front {
+    height: 80px;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .row-behind-text h2 , .text-seat-front {
+    text-align: center;
+    font-size: 44px;
+    color: black;
+  }
+  .item-seating{
+    position: relative;
+    border: 2px solid;
+    text-align: center;
+    border-radius: 15px 15px 0 0;
+    height: 50px;
+    padding: 10px 5px;
+    margin: 6px 4px;
+    display : flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .item-seating p{
+    position: absolute;
+    right:0;
+    left:0;
+    bottom:0;
+    top:20px;
+  }
+  .item-seating h2 {
+    position: absolute;
+    right:0;
+    left:0;
+    bottom:0;
+    top:30px;
+    font-size: 15px;
+    line-height: 30px;
+  }
+  .row-seating{
+    display: inline-block;
+    width: 19%;
+    margin: 4px;
+  }
+  .item-seating svg {
+    transform: rotate(-90deg);
+  }
+  .icon-bus{
+    color: white;
+  }
+  .item-door{
+    border: 2px solid;
+    width: 20px;
+    background-color: black;
+  }
+  .row-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 20px;
+    align-items:center;
+    flex-wrap: nowrap;
+  }
+  .window {
+    width: 400px;
+    height: 100px;
+    position: absolute;
+    right: 0;
+    bottom: 10px;
+  }
+  .seat-driver  {
+    width: 400px;
+    height: 100px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+  }
+
+  .table-bus{
+    margin: 20px 0 ;
+  }
+  .line-one{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+  }
+  .item-table{
+    padding: 10px 5px;
+    text-align: center;
+    border-collapse: collapse;
+  }
+  .line-two{
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
+  }
+  .border-white{
+    border: 1px solid white;
+  }
+  .line-one .item-table{
+    border-top: 1px solid;
+    border-left: 1px solid;
+    border-bottom: 1px solid;
+  }
+  .line-one .item-table:last-child{
+    border-right: 1px solid;
+  }
+  .line-two .item-table{
+    border-left: 1px solid;
+    border-bottom: 1px solid;
+  }
+  .line-two .item-table:last-child{
+    border-right: 1px solid;
+  }
+</style>
+<div class="container" style="margin: 0 30px;">
+  <div class="main-bus">
+    <div class="container-list">
+      <div class="list-seating">
+        <div class="row-behind-text">
+          <h2 >後方</h2>
+        </div>
+        <% object.seats_map.each do |seat_map| %>
+          <div class="row-seating">
+            <% seat_map.reverse().each do |seat| %>
+              <% if seat["type"] != Tour::BusInfo::HIDE %>
+                <div class="item-seating">
+                  <p><%= seat["name"] %></p>
+                  <h2>
+                    <%= seat["full_name"] %>
+                    <% if seat["full_name"].present? %>
+                      様
+                    <% end %>
+                  </h2>
+                </div>
+              <% else %>
+                  <div class="item-seating-hide"> </div>
+              <% end %>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+
+      <div class="row-header">
+        <%= image_tag wicked_pdf_asset_base64('seat_driver.png'), class: 'seat-driver' %>
+        <h2 class="text-seat-front">前方</h2>
+        <%= image_tag wicked_pdf_asset_base64('windows.png'), class: 'window' %>
+      </div>
+    </div>
+  </div>
+  <table class="seat-map-table" style="margin-top: 10%">
+    <tbody>
+      <tr>
+        <td colspan="2">ツアーNO</td>
+        <td colspan="3"><%= object.tour.code %></td>
+        <td colspan="2">日帰り京都の旅</td>
+        <td colspan="4" class="w-40"><%= object.tour.name %></td>
+      </tr>
+      <tr>
+        <td colspan="2">出発日</td>
+        <td colspan="2">
+          <%= I18n.l(object.departure_date, format: :short) if object.departure_date.presence %>
+        </td>
+        <td colspan="2">出発地</td>
+        <td colspan="2"><%= object.tour_start_location&.address||object.tour_stay_departure&.address %></td>
+        <td colspan="1">号車</td>
+        <td colspan="2"><%= object.bus_no %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

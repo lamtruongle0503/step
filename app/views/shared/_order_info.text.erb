@@ -1,0 +1,29 @@
+<% order_info = order.order_info %>
+<% receiver = order_info.address %>
+■配送先・商品情報
+お名前：<%= receiver.full_name %>様
+ご住所：<%= receiver.address1 %>
+電話番号：<%= receiver.telephone %>
+お届け希望日：<%= I18n.l(order_info.delivery_date, format: :short) if order_info.delivery_date %>
+お届け希望時間帯：<%= expect_delivery_time(order_info.delivery_start_time,
+                                        order_info.delivery_end_time) %>
+配送方法：<%= order.delivery.name %>
+
+■商品詳細
+<% order.order_products.each do |order_product| %>
+<% tax = order_product.product.tax %>
+<% discount = order_product.product.discount %>
+<% product_price = (JSON.parse(order_product.order_log.product_size)['price'])*(1 - discount.to_f/100).to_f %>
+<% product_price_include_tax = (JSON.parse(order_product.order_log.product_size)['price']).to_f %>
+<% subtotal = product_price_include_tax.discount_of(discount) * order_product.number %>
+商品名: <%= order_product.product.name %>
+商品価格（税込）： <%= product_price&.to_i %>
+数量：<%= order_product.number %>
+小計（税込）：<%= subtotal&.to_i %>
+<% end %>
+送料：<%= order.delivery_amount&.to_i %>
+送料無料：<%= order.delivery_free_amount %>
+ポイント利用：<%= order.used_point&.to_i %>
+クーポン利用：<%= order.coupon_amount&.to_i %>
+代引手数料：<%= order.delivery_charges_fee.to_i %>
+支払い金額：<%= order.purchased_amount&.to_i %>

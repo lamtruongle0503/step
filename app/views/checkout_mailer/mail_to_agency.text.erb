@@ -1,0 +1,30 @@
+【<%= @order.agency.name %>】様
+
+お世話になっております。
+以下の内容で、ご注文を承りました。
+販売された商品に関して在庫等、問題がないかご確認くださいませ。
+
+【購入番号】<%= @order.code %>
+
+<%= render "shared/orderer_info", orderer: @order.user %>
+<%= render "shared/order_info", order: @order %>
+■支払い方法
+お支払い方法：<%= @order.payment.name %>
+※お支払い期限までに入金が確認できなかった場合は、
+注文がキャンセル扱いとなります。ご了承ください。
+
+商品の発送につきましては、お支払い方法ごとに異なります。
+以下を必ずご確認ください。
+
+<% case @order.payment.code %>
+<% when Order::CREDIT_CARD, Order::ON_DELIVERY %>
+上記配送先宛に、商品の発送をお願いします。
+お届け希望がある場合は、日時指定にて発送ください。
+商品の発送が完了しましたらお手数ですが、送り状番号を付与した上で、発送完了のメールをご返信ください。
+<% when Order::BANK_TRANSFER, Order::CONVENIENCE_STORE %>
+ご注文頂いたお客様の代金お支払い待ちとなります。
+お客様からのご入金が確認でき次第、追ってメールにてご連絡致します。
+<% end %>
+
+販売に関するお問い合わせ先
+99-9999-9999

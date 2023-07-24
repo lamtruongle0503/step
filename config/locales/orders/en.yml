@@ -1,0 +1,44 @@
+en:
+  orders:
+    only_use_credit_card_or_bank_transfer: only_use_credit_card_or_bank_transfer
+    must_be_waiting: must_be_waiting
+    must_has_credit_card: must_has_credit_card
+    invalid_credit_card: |
+      注文に失敗しました。
+      支払いカードは有効ではありません。
+    invalid_charge_amount: |
+      注文に失敗しました。
+      あなたのクレジット口座は支払うのに十分ではありません。
+    invalid_checkout: |
+      注文に失敗しました。
+      もう一度お試してください。
+    amount_too_small: |
+      amount_must_be_at_least_¥50
+
+    coupons:
+      must_less_than_or_equal_product_price: must_less_than_or_equal_product_price
+
+    email:
+      agency_body: "STEP TRAVELサービスのご利用ありがとうございます。\n
+
+                    ※こちらのメールはシステムより自動配信しておりますので、\n
+                    　このメールには返信しないで下さい。
+
+                    下記のご注文を受領いたしました。\n
+                    内容をご確認下さい。\n
+                    ----------------\n
+                    ■ ご注文情報\n
+                    ----------------\n
+                    注文番号：%{order_code}\n
+                    商品一覧:\n
+                    ----------------\n
+                    %{order_body}\n
+                    ----------------\n
+                    =================================\n
+                    株式会社ＳＴＥＰトラベル\n
+                    〒556-0017\n
+                    大阪府大阪市浪速区湊町１－２－３マルイト難波ビル１５階\n
+                    TEL：06-6634-0123\n
+
+                    =================================\n
+                    "

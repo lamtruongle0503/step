@@ -1,0 +1,6 @@
+<td><%= data[:size] %>件</td>
+<td colspan="2"><%= number_with_precision(data[:total], precision: 3, separator: ',') %></td>
+<td><%= format_rate(data[:rate]) %></td>
+<td colspan="2"><%= number_with_precision(data[:commission], precision: 3, separator: ',') %></td>
+<td colspan="2"><%= number_with_precision(data[:deposit], precision: 3, separator: ',') %></td>
+<td colspan="2"><%= number_with_precision(data[:billing], precision: 3, separator: ',') %></td>

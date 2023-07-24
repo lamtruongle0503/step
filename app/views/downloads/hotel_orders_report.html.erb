@@ -1,0 +1,102 @@
+<div class="container">
+  <div>実績精算書</div>
+  <table class="hotel-table mb-1rem">
+    <tbody>
+      <tr>
+        <td colspan="2">ホテル・旅館名称</td>
+        <td colspan="6"><%= object[:meta][:hotel_name] %></td>
+        <td colspan="2">取扱月 <span style="margin-left: 1rem;"><%= object[:meta][:month] %></span>月分</td>
+        <td colspan="2">発行日<%= I18n.l(object[:meta][:created_at], format: :common) %></td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="hotel-table mb-1rem">
+    <tbody>
+      <tr>
+        <td colspan="3" rowspan="2">入金額
+          <span class="d-block"><%= object[:meta][:month] %>月最終営業日予定</span>
+        </td>
+        <td colspan="3" rowspan="2" class="w-25" style="font-size: 18px;">
+          <%= number_with_precision(total_deposit(object) - total_billing(object), precision: 3, separator: ',') %>
+        </td>
+        <td colspan="3" rowspan="2">請求額
+          <span class="d-block"><%= object[:meta][:month] %>月最終営業日期日</span>
+        </td>
+        <td colspan="3" rowspan="2" class="w-25"><%= number_with_precision(object[:meta][:total_payment], precision: 3, separator: ',') %></td>
+      </tr>
+    </tbody>
+  </table>
+  <table class="hotel-table content-left">
+    <tbody>
+      <tr>
+        <th colspan="2">項目</th>
+        <th>件数</th>
+        <th colspan="2">金額</th>
+        <th>率</th>
+        <th colspan="2">手数料</th>
+        <th colspan="2">入金額</th>
+        <th colspan="2">請求額</th>
+      </tr>
+      <tr>
+        <td colspan="2" class="content-small">宿泊済予約一覧（クレジット決済　web即時予約分）</td>
+        <%= render "shared/hotel_order_statistics", data: object[:credit_card_and_web] %>
+      </tr>
+      <tr>
+        <td colspan="2" class="content-small">宿泊済予約一覧（クレジット決済　買取予約分）</td>
+        <%= render "shared/hotel_order_statistics", data: object[:credit_card_and_consignment] %>
+      </tr>
+      <tr>
+        <td colspan="2" class="content-small">宿泊済予約一覧（クレジット決済　リクエスト予約分）</td>
+        <%= render "shared/hotel_order_statistics", data: object[:credit_card_and_request] %>
+      </tr>
+      <tr>
+        <td colspan="2" class="content-small">
+          <p>クレジット決済手数料（予約分）</p>
+          <p>※ポイント利用除く・webリクエスト予約</p>
+        </td>
+        <%= render "shared/hotel_order_statistics", data: object[:credit_card_web_and_request] %>
+      </tr>
+
+      <tr>
+        <td colspan="2" class="content-small">宿泊済予約一覧（現地決済　web即時予約分）</td>
+        <%= render "shared/hotel_order_statistics", data: object[:on_spot_and_web] %>
+      </tr>
+      <tr>
+        <td colspan="2" class="content-small">宿泊済予約一覧（現地決済　リクエスト予約分）</td>
+        <%= render "shared/hotel_order_statistics", data: object[:on_spot_and_request] %>
+      </tr>
+      <tr>
+        <td colspan="2" class="content-small">宿泊済予約一覧（現地決済　買取予約分）</td>
+        <%= render "shared/hotel_order_statistics", data: object[:on_spot_and_consignment] %>
+      </tr>
+      <tr>
+        <td colspan="2" class="content-small">ポイント利用（現地決済）</td>
+        <%= render "shared/hotel_order_statistics", data: object[:on_spot_use_point] %>
+      </tr>
+      <tr>
+        <td colspan="2" class="content-small">キャンセル済予約一覧（クレジット決済　web即時予約分）</td>
+        <%= render "shared/hotel_order_statistics", data: object[:cancel_credit_card_and_web] %>
+      </tr>
+      <tr>
+        <td colspan="2" class="content-small">キャンセル済予約一覧（クレジット決済　リクエスト予約分）</td>
+        <%= render "shared/hotel_order_statistics", data: object[:cancel_credit_card_and_request] %>
+      </tr>
+      <tr>
+        <td colspan="2" class="content-small">キャンセル済予約一覧（クレジット決済　買取予約分）</td>
+        <%= render "shared/hotel_order_statistics", data: object[:credit_card_and_consignment] %>
+      </tr>
+      <tr>
+        <td colspan="2" class="content-small">
+          <p>クレジット決済手数料（キャンセル分）</p>
+          <p>※ポイント利用除く・追加決済含む </p>
+        </td>
+        <%= render "shared/hotel_order_statistics", data: object[:cancel_credit_card_web_request] %>
+      </tr>
+      <tr>
+        <td colspan="8">合計</td>
+        <td colspan="2"><%= number_with_precision(total_deposit(object), precision: 3, separator: ',') %></td>
+        <td colspan="2"><%= number_with_precision(total_billing(object), precision: 3, separator: ',') %></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

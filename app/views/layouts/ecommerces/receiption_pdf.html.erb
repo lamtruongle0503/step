@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Receiption</title>
+  <style>
+    @import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap");
+
+    @media screen, print {
+      * {
+        box-sizing: border-box;
+        color-adjust: exact;
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        border-collapse: collapse;
+        line-height: 1.75;
+      }
+
+      body {
+        font-size: 12px;
+        color: #515557;
+        font-weight: 400;
+        font-family: 'Noto Sans JP', sans-serif;
+      }
+
+      .pdf-container {
+        width: 100%;
+        max-width: 548px;
+        margin: 36px auto 48px;
+      }
+      .row {
+        margin-left: -0.5rem;
+        margin-right: -0.5rem;
+      }
+      .row::after {
+        content: "";
+        clear: both;
+        display: table;
+      }
+      .row.no-gap > .col:not(:last-child) {
+        padding-right: 0;
+      }
+      .row.no-gap > .col:not(:first-child) {
+        padding-left: 0;
+      }
+      .col {
+        padding-left: 0.5rem;
+        padding-right: 0.5rem;
+        width: 100%;
+        float: left;
+      }
+      .col.empty::after {
+        content: ".";
+        visibility: hidden;
+      }
+      .col-1 {
+        width: calc(100% / 12);
+      } 
+      .col-11 {
+        width: calc(1100% / 12);
+      }
+      .text-right {
+        text-align: right;
+      }
+      .text-center {
+        text-align: center;
+      }
+      .fs-md {
+        font-size: 14px;
+      }
+      .fs-lg {
+        font-size: 28px;
+      }
+      .fw-md {
+        font-weight: 500;
+      }
+      .fw-bold {
+        font-weight: 700;
+      }
+      .m0 {
+        margin: 0;
+      }
+      .mt18 {
+        margin-top: 18px;
+      }
+      .mb18 {
+        margin-bottom: 18px;
+      }
+      .mb38 {
+        margin-bottom: 38px;
+      }
+      .mb32 {
+        margin-bottom: 32px;
+      }
+      .mb36 {
+        margin-bottom: 36px;
+      }
+      .mb48 {
+        margin-bottom: 48px;
+      }
+
+      table.product,
+      table.product th,
+      table.product td {
+        border: 1px solid;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+      table.product th {
+        font-weight: normal;
+        background-color: #F0C195;
+      }
+
+      table.product .table-cell {
+        height: 33px;
+        padding-left: 12px;
+        display: flex;
+        align-items: center;
+      }
+
+      .price-border {
+        border-bottom: 1px solid #000;
+      }
+
+      .note-border {
+        border-bottom: 2px solid #C00000;
+      }
+    }
+
+  </style>
+</head>
+<body>
+  <%= yield %>
+</body>
+</html>

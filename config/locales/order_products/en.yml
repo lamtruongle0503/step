@@ -1,0 +1,6 @@
+en:
+  order_products:
+    must_be_in_order: must_be_in_order
+    remain_product_must_greater_than_zero: remain_product_must_greater_than_zero
+  carts:
+    product_must_be_show: product_must_be_show

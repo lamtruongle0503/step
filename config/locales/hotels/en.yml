@@ -1,0 +1,18 @@
+en:
+  hotels:
+    meals:
+      end_time: 'end time must be after start time'
+    orders:
+      over_point: 'over point'
+      must_be_after_check_in: 'must be after check in'
+      must_be_before_check_out: 'must be before check out'
+      number_night_no_right: 'number night no right'
+    rooms:
+      child_no_available: 'child no available'
+      out_of_room: 'out of room'
+      not_on_the_plan_date: 'not on the plan date'
+      remain_room_not_in_range: 'remain room not in range'
+    images_must_be_an_array: 'images must be an array'
+    plans:
+      reserved: 'reserved'
+      must_be_less_than_15_character: 'must_be_less_than_15_character'

@@ -1,0 +1,5 @@
+en:
+  addresses:
+    post_code_must_be_valid: post_code_must_be_valid
+    must_in_user_address: must_in_user_address
+    must_setup_address: must_setup_address

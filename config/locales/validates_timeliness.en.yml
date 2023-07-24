@@ -1,0 +1,23 @@
+en:
+  errors:
+    messages:
+      invalid_date: "is not a valid date"
+      invalid_time: "is not a valid time"
+      invalid_datetime: "is not a valid datetime"
+      is_at: "must be at %{restriction}"
+      before: "must be before %{restriction}"
+      on_or_before: "must be on or before %{restriction}"
+      after: "must be after %{restriction}"
+      on_or_after: "must be on or after %{restriction}"
+  validates_timeliness:
+    error_value_formats:
+      date: '%Y-%m-%d'
+      time: '%H:%M:%S'
+      datetime: '%Y-%m-%d %H:%M:%S'
+  must_be_after_today: "must be after today"
+  must_be_before_today: "must be before today"
+  must_be_after_start_time: "must be after start time"
+  must_be_before_end_time: "must be before end time"
+  must_be_on_or_after_end_of_month: 'must be on or after end of month'
+  must_be_after_start_date: "must be after start date"
+  must_be_before_end_date: "must be before end date"
